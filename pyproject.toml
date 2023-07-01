@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "my_gmail_project"
+version = "0.1.0"
+description = "Create draft messages in Gmail"
+authors = ["Your Name <your_email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+google-api-python-client = "^2.21.0"
+python-decouple = "^3.5"
+google-auth-httplib2 = "^0.1.0"
+google-auth-oauthlib = "^0.4.6"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
