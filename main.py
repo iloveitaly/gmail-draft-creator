@@ -7,6 +7,7 @@ from email.mime.text import MIMEText
 import os
 import base64
 import pickle
+import csv
 
 SCOPES = [
     'https://www.googleapis.com/auth/gmail.compose',
@@ -14,6 +15,27 @@ SCOPES = [
     'https://www.googleapis.com/auth/calendar.readonly',
     'https://www.googleapis.com/auth/calendar.events'
 ]
+
+import click
+
+@click.command()
+@click.argument('csv_file_path', type=click.Path(exists=True))
+@click.argument('template_file_path', type=click.Path(exists=True))
+@click.argument('subject', type=str)
+def send_drafts_from_csv_cli(csv_file_path, template_file_path, subject):
+    send_drafts_from_csv(csv_file_path, template_file_path, subject)
+
+def send_drafts_from_csv(csv_file_path, template_file_path, subject):
+    with open(template_file_path, 'r') as template_file:
+        template_string = template_file.read()
+
+    with open(csv_file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            email = row.pop('email', None) or row.pop('Email', None)
+            template_params = {k.lower(): v for k, v in row.items()}
+            if email is not None:
+                create_draft(email, subject, template_string, template_params)
 
 def create_draft(email, subject, template_string, template_params):
     creds = None
@@ -44,3 +66,7 @@ def create_draft(email, subject, template_string, template_params):
     body = {'message': {'raw': raw_message}}
 
     draft = service.users().drafts().create(userId='me', body=body).execute()
+
+
+if __name__ == '__main__':
+    send_drafts_from_csv_cli()
