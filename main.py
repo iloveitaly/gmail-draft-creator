@@ -22,10 +22,11 @@ import click
 @click.argument('csv_file_path', type=click.Path(exists=True))
 @click.argument('template_file_path', type=click.Path(exists=True))
 @click.argument('subject', type=str)
-def send_drafts_from_csv_cli(csv_file_path, template_file_path, subject):
-    send_drafts_from_csv(csv_file_path, template_file_path, subject)
+@click.option('--dry-run', is_flag=True, default=False, help='Run script without creating drafts.')
+def send_drafts_from_csv_cli(csv_file_path, template_file_path, subject, dry_run):
+    send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run)
 
-def send_drafts_from_csv(csv_file_path, template_file_path, subject):
+def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run=False):
     with open(template_file_path, 'r') as template_file:
         template_string = template_file.read()
 
@@ -35,9 +36,9 @@ def send_drafts_from_csv(csv_file_path, template_file_path, subject):
             email = row.pop('email', None) or row.pop('Email', None)
             template_params = {k.lower(): v for k, v in row.items()}
             if email is not None:
-                create_draft(email, subject, template_string, template_params)
+                create_draft(email, subject, template_string, template_params, dry_run)
 
-def create_draft(email, subject, template_string, template_params):
+def create_draft(email, subject, template_string, template_params, dry_run=False):
     creds = None
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
@@ -65,7 +66,8 @@ def create_draft(email, subject, template_string, template_params):
     raw_message = raw_message.decode()
     body = {'message': {'raw': raw_message}}
 
-    draft = service.users().drafts().create(userId='me', body=body).execute()
+    if not dry_run:
+        draft = service.users().drafts().create(userId='me', body=body).execute()
 
 
 if __name__ == '__main__':
