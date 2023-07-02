@@ -44,6 +44,3 @@ def create_draft(email, subject, template_string, template_params):
     body = {'message': {'raw': raw_message}}
 
     draft = service.users().drafts().create(userId='me', body=body).execute()
-
-
-create_draft('iloveitaly@gmail.com', 'Test', 'Hello, World! $name', {"name": 'Mike'})
