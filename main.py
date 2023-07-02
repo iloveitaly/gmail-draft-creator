@@ -1,3 +1,4 @@
+from string import Template
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -7,9 +8,14 @@ import os
 import base64
 import pickle
 
-SCOPES = ['https://www.googleapis.com/auth/gmail.compose']
+SCOPES = [
+    'https://www.googleapis.com/auth/gmail.compose',
+    'https://www.googleapis.com/auth/gmail.readonly',
+    'https://www.googleapis.com/auth/calendar.readonly',
+    'https://www.googleapis.com/auth/calendar.events'
+]
 
-def create_draft(email, name, subject, template):
+def create_draft(email, subject, template_string, template_params):
     creds = None
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
@@ -26,7 +32,10 @@ def create_draft(email, name, subject, template):
 
     service = build('gmail', 'v1', credentials=creds)
 
-    message = MIMEText(template)
+    message_template = Template(template_string)
+    message_text = message_template.substitute(template_params)
+
+    message = MIMEText(message_text)
     message['to'] = email
     message['subject'] = subject
 
@@ -36,4 +45,5 @@ def create_draft(email, name, subject, template):
 
     draft = service.users().drafts().create(userId='me', body=body).execute()
 
-create_draft('iloveitaly@gmail.com', 'Mike', 'Test', 'Hello, World!')
+
+create_draft('iloveitaly@gmail.com', 'Test', 'Hello, World! $name', {"name": 'Mike'})
