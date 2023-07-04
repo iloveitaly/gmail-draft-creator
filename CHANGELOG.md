@@ -1,4 +1,13 @@
-## 1.0.1 (2023-07-04)
+# [1.1.0](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.0.1...v1.1.0) (2023-07-04)
+
+
+### Features
+
+* vscode configuration ([a0bf636](https://github.com/iloveitaly/gmail-draft-creator/commit/a0bf63639b4e8727a36e05176fa1adc2434e7b3f))
+
+
+
+## [1.0.1](https://github.com/iloveitaly/gmail-draft-creator/compare/8bd392ead05bc6e5f37905775ce8286b75f76aac...v1.0.1) (2023-07-04)
 
 
 ### Bug Fixes
