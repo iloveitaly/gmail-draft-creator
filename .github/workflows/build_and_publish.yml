@@ -15,7 +15,7 @@ jobs:
 
       - name: ASDF Parse
         uses: kota65535/github-asdf-parse-action@v1.1.0
-        id: version
+        id: versions
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -23,9 +23,9 @@ jobs:
           python-version: "${{ steps.versions.outputs.python }}"
 
       - name: Install Poetry
-        uses: shivammathur/setup-poetry@v1
+        uses: Gr1N/setup-poetry@v8
         with:
-          version: "${{ steps.versions.outputs.poetry }}"
+          poetry-version: "${{ steps.versions.outputs.poetry }}"
 
       - name: Install dependencies
         run: |
