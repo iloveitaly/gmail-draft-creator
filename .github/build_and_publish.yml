@@ -1,0 +1,39 @@
+# .github/build_and_publish.yml
+name: Build and Publish to PyPI
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: ASDF Parse
+        uses: kota65535/github-asdf-parse-action@v1.1.0
+        id: version
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "${{ steps.versions.outputs.python }}"
+
+      - name: Install Poetry
+        uses: shivammathur/setup-poetry@v1
+        with:
+          version: "${{ steps.versions.outputs.poetry }}"
+
+      - name: Install dependencies
+        run: |
+          poetry install
+
+      - name: Build distribution package
+        run: |
+          poetry build
+
+      - name: Publish to PyPI
+        run: |
+          poetry publish -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
