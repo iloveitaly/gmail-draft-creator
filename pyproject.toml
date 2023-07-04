@@ -3,6 +3,8 @@ name = "gmail_draft_creator"
 version = "1.0.0"
 description = "Create draft messages in Gmail"
 authors = ["Michael Bianco <mike@mikebian.co>"]
+license = "MIT"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
