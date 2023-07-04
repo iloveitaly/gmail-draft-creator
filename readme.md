@@ -3,9 +3,15 @@
 Simple tool to take a CSV and a template and create drafts in your Gmail. Useful for sending emails to large-ish numbers
 of people where you want to slightly customize the emails for each user. You can quickly run through drafts, customize it, and send.
 
+## Installation
+
+```shell
+pip install gmail-draft-creator
+```
+
 ## Usage
 
-```
+```shell
 Usage: gmail-draft-creator [OPTIONS]
 
 Options:
