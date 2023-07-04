@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gmail_draft_creator"
-version = "1.0.0"
+version = "1.0.1"
 description = "Create draft messages in Gmail"
 authors = ["Michael Bianco <mike@mikebian.co>"]
 license = "MIT"
