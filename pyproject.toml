@@ -5,6 +5,7 @@ description = "Create draft messages in Gmail"
 authors = ["Michael Bianco <mike@mikebian.co>"]
 license = "MIT"
 readme = "readme.md"
+homepage = "https://github.com/iloveitaly/gmail-draft-creator"
 
 [tool.poetry.dependencies]
 python = "^3.9"

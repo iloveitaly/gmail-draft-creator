@@ -6,20 +6,9 @@ on:
     branches:
       - main
 
+# by default, permissions are read-only, read + write is required for git pushes
 permissions:
-  # actions: read|write|none
-  # checks: read|write|none
   contents: write
-  # deployments: read|write|none
-  # id-token: read|write|none
-  # issues: read|write|none
-  # discussions: read|write|none
-  # packages: read|write|none
-  # pages: read|write|none
-  # pull-requests: read|write|none
-  # repository-projects: read|write|none
-  # security-events: read|write|none
-  # statuses: read|write|none
 
 jobs:
   build-and-publish:
@@ -56,11 +45,11 @@ jobs:
         id: changelog
         uses: TriPSs/conventional-changelog-action@v3
         with:
-          github-token: ${{ secrets.github_token}}
-          version-file: './pyproject.toml'
-          version-path: 'tool.poetry.version'
+          github-token: ${{ secrets.github_token }}
+          version-file: "./pyproject.toml"
+          version-path: "tool.poetry.version"
           fallback-version: "1.0.0"
-          output-file: 'CHANGELOG.md'
+          output-file: "CHANGELOG.md"
 
       # NOTE must run after versioning otherwise the right version won't be pushed
       - name: Build distribution package
