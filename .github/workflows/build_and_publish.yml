@@ -1,4 +1,5 @@
-# .github/build_and_publish.yml
+# .github/workflows/build_and_publish.yml
+
 name: Build and Publish to PyPI
 on:
   push:
@@ -36,4 +37,5 @@ jobs:
 
       - name: Publish to PyPI
         run: |
+          # `gh secret set PYPI_API_TOKEN --app actions --body $PYPI_API_TOKEN`
           poetry publish -u __token__ -p ${{ secrets.PYPI_API_TOKEN }}
