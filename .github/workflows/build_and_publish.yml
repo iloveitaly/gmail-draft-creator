@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: ASDF Parse
         uses: kota65535/github-asdf-parse-action@v1.1.0
