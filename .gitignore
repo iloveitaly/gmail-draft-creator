@@ -1,3 +1,7 @@
 token.pickle
 credentials.json
 .envrc
+.venv
+
+emails.csv
+template

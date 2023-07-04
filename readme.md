@@ -1,5 +1,27 @@
+# Gmail Drafter: Create Mail Merge Drafts
 
-## Generating a Gmail API Token
+Simple tool to take a CSV and a template and create drafts in your Gmail. Useful for sending emails to large-ish numbers
+of people where you want to slightly customize the emails for each user. You can quickly run through drafts, customize it, and send.
+
+## Usage
+
+```
+Usage: gmail-draft-creator [OPTIONS]
+
+Options:
+  --csv PATH       Path to the CSV file.  [required]
+  --template PATH  Path to the template file.  [required]
+  --subject TEXT   Subject for the email drafts.  [required]
+  --dry-run        Run script without creating drafts.
+  --help           Show this message and exit.
+
+```
+
+You can also import the `create_draft` function and use it in your own scripts.
+
+## Setup
+
+### Generating a Gmail API Token
 
 1. Navigate to the Google Cloud Console. https://console.developers.google.com/
 2. Create a new project or select an existing one.
@@ -10,9 +32,16 @@
 7. Download the JSON file, rename it to `credentials.json`, and place it in the root of your project.
 8. Run the script and oauth into your account
 
-### Scopes Needed
+#### Credential Scopes Needed
 
 * https://www.googleapis.com/auth/gmail.compose
 * https://www.googleapis.com/auth/gmail.readonly
 * https://www.googleapis.com/auth/calendar.readonly
 * https://www.googleapis.com/auth/calendar.event
+
+Some of these are in place for possible future improvements.
+
+## TODO
+
+- [ ] add credentials as a command line argument
+- [ ] add serialized token as a CLI argument
