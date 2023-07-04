@@ -18,6 +18,29 @@ markdown = "^3.4.3"
 [tool.poetry.scripts]
 gmail-draft-creator = "gmail_draft_creator:main"
 
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+isort = "^5.12.0"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+exclude = '''
+/(
+  .venv
+  | node_modules
+  | migrations
+)/
+'''
+
+# when changing this config, you need to restart your vscode isort server
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+sections = "SETUP,FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,PRISMA,LOCALFOLDER"
+known_setup = "python.setup"
+known_prisma = "prisma"
