@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "my_gmail_project"
-version = "0.1.0"
+name = "gmail_draft_creator"
+version = "1.0.0"
 description = "Create draft messages in Gmail"
-authors = ["Your Name <your_email@example.com>"]
+authors = ["Michael Bianco <mike@mikebian.co>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -15,6 +15,9 @@ markdown = "^3.4.3"
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
+
+[tool.poetry.scripts]
+gmail-draft-creator = "gmail_draft_creator:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

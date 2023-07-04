@@ -84,6 +84,6 @@ def create_draft(email, subject, template_string, template_params, dry_run=False
     logging.info(f'draft created for email: {email}')
 
 
-if __name__ == '__main__':
+def main():
     logging.basicConfig(level=logging.INFO)
     send_drafts_from_csv_cli()
