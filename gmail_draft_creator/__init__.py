@@ -8,6 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from string import Template
 
+import click
 import markdown
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -21,23 +22,39 @@ SCOPES = [
     "https://www.googleapis.com/auth/calendar.events",
 ]
 
-import click
-
 
 @click.command()
 @click.option("--csv", "csv_file_path", type=click.Path(exists=True), help="Path to the CSV file.", required=True)
 @click.option(
     "--template", "template_file_path", type=click.Path(exists=True), help="Path to the template file.", required=True
 )
-@click.option("--subject", "subject", type=str, help="Subject for the email drafts.", required=True)
+@click.option("--subject", "subject", type=str, help="Subject for the email drafts.", required=False)
 @click.option("--dry-run", is_flag=True, default=False, help="Run script without creating drafts.")
 def send_drafts_from_csv_cli(csv_file_path, template_file_path, subject, dry_run):
     send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run)
 
 
-def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run=False):
+def _process_template_string(raw_template_string):
+    # if the first line in the file starts with "Subject: " pull that into a separate variable
+    # and remove it from the template string
+    first_line = raw_template_string.split("\n")[0]
+
+    if first_line.startswith("Subject: "):
+        subject = first_line.replace("Subject: ", "").strip()
+        # remove first line from template string
+        template_string = "\n".join(raw_template_string.split("\n")[1:])
+    else:
+        subject = None
+        template_string = raw_template_string
+
+    template_string = markdown.markdown(template_string.strip())
+
+    return subject, template_string
+
+
+def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run):
     with open(template_file_path, "r") as template_file:
-        template_string = markdown.markdown(template_file.read())
+        template_string = template_file.read()
 
     with open(csv_file_path, "r") as file:
         reader = csv.DictReader(file)
@@ -46,10 +63,11 @@ def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run=Fal
             template_params = {k.lower(): v for k, v in row.items()}
 
             if email is not None:
-                create_draft(email, subject, template_string, template_params, dry_run)
+                create_draft(email, template_string, template_params, subject, dry_run)
 
 
-def create_draft(email, subject, template_string, template_params, dry_run=False):
+# TODO this should really be much smarter
+def _extract_credentials():
     creds = None
     if os.path.exists("token.pickle"):
         with open("token.pickle", "rb") as token:
@@ -64,7 +82,20 @@ def create_draft(email, subject, template_string, template_params, dry_run=False
         with open("token.pickle", "wb") as token:
             pickle.dump(creds, token)
 
+    return creds
+
+
+def create_draft(email, template_string, template_params, subject=None, dry_run=False):
+    creds = _extract_credentials()
     service = build("gmail", "v1", credentials=creds)
+
+    template_subject, template_string = _process_template_string(template_string)
+
+    if template_subject and subject:
+        raise ValueError("Subject defined in both template and arguments, pick one")
+
+    subject_template = template_subject or subject
+    subject = Template(subject_template).substitute(template_params)
 
     message_template = Template(template_string)
     message_text = message_template.substitute(template_params)
