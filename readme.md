@@ -25,6 +25,16 @@ Options:
 
 You can also import the `create_draft` function and use it in your own scripts.
 
+### Template Files
+
+You can include subject line and variables in the template file:
+
+```text
+Subject: Hello $NAME
+
+Hi, here's another ${REASON} why I'm emailing you.
+```
+
 ## Setup
 
 ### Generating a Gmail API Token
