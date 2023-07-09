@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.1.0...v1.2.0) (2023-07-09)
+
+
+### Features
+
+* support included subject in template string, add variables to template ([dab13a0](https://github.com/iloveitaly/gmail-draft-creator/commit/dab13a089fb80c71d40e241a2b07240e5264618f))
+
+
+
 # [1.1.0](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.0.1...v1.1.0) (2023-07-04)
 
 
