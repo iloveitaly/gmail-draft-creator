@@ -17,7 +17,7 @@ Usage: gmail-draft-creator [OPTIONS]
 Options:
   --csv PATH       Path to the CSV file.  [required]
   --template PATH  Path to the template file.  [required]
-  --subject TEXT   Subject for the email drafts.  [required]
+  --subject TEXT   Subject for the email drafts.
   --dry-run        Run script without creating drafts.
   --help           Show this message and exit.
 

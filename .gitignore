@@ -3,5 +3,5 @@ credentials.json
 .envrc
 .venv
 
-emails.csv
-template
+/*.csv
+/template*

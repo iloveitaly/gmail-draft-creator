@@ -7,6 +7,9 @@ license = "MIT"
 readme = "readme.md"
 homepage = "https://github.com/iloveitaly/gmail-draft-creator"
 
+[project.urls]
+'Changelog' = 'https://github.com/iloveitaly/gmail-draft-creator/blob/master/CHANGELOG.md'
+
 [tool.poetry.dependencies]
 python = "^3.9"
 google-api-python-client = "^2.21.0"
