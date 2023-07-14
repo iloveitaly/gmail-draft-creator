@@ -1,3 +1,12 @@
+## [1.2.1](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.2.0...v1.2.1) (2023-07-14)
+
+
+### Bug Fixes
+
+* skip empty emails, strip keys and values ([435a05e](https://github.com/iloveitaly/gmail-draft-creator/commit/435a05e9da1685c27d8f79f07d75b8e2fe41d5b0))
+
+
+
 # [1.2.0](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.1.0...v1.2.0) (2023-07-09)
 
 
