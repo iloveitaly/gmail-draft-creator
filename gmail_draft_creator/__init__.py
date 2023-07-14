@@ -60,7 +60,13 @@ def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run):
         reader = csv.DictReader(file)
         for row in reader:
             email = row.pop("email", None) or row.pop("Email", None)
-            template_params = {k.lower(): v for k, v in row.items()}
+
+            if email is None:
+                print("No email found for row, skipping")
+                continue
+
+            email = email.strip()
+            template_params = {k.lower().strip(): v.strip() for k, v in row.items()}
 
             if email is not None:
                 create_draft(email, template_string, template_params, subject, dry_run)
