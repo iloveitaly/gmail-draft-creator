@@ -1,11 +1,12 @@
 [tool.poetry]
 name = "gmail_draft_creator"
 version = "1.2.1"
-description = "Create draft messages in Gmail"
+description = "Simple tool to take a CSV and a template and create drafts in your Gmail. Can be used as a command line tool, or as a library."
 authors = ["Michael Bianco <mike@mikebian.co>"]
 license = "MIT"
 readme = "readme.md"
 homepage = "https://github.com/iloveitaly/gmail-draft-creator"
+keywords = ["gmail", "email", "gmail-api"]
 
 [project.urls]
 'Changelog' = 'https://github.com/iloveitaly/gmail-draft-creator/blob/master/CHANGELOG.md'
