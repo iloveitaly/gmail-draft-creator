@@ -20,7 +20,6 @@ Options:
   --subject TEXT   Subject for the email drafts.
   --dry-run        Run script without creating drafts.
   --help           Show this message and exit.
-
 ```
 
 You can also import the `create_draft` function and use it in your own scripts.
@@ -36,6 +35,8 @@ Hi, here's another ${REASON} why I'm emailing you.
 ```
 
 ## Setup
+
+You need to create a "OAuth 2.0 Client IDs" which has to be done with a Google Workspace (gsuite). This will not work on a personal gmail account (unless you create a app on a workspace and add your personal account as a test account).
 
 ### Generating a Gmail API Token
 
@@ -55,7 +56,7 @@ Hi, here's another ${REASON} why I'm emailing you.
 * https://www.googleapis.com/auth/calendar.readonly
 * https://www.googleapis.com/auth/calendar.event
 
-Some of these are in place for possible future improvements.
+Some of these (calendar APIs) are in place for possible future improvements.
 
 ## TODO
 
