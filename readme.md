@@ -34,6 +34,16 @@ Subject: Hello $NAME
 Hi, here's another ${REASON} why I'm emailing you.
 ```
 
+### CSV Files
+
+A CSV file that would work with this template might be something like this:
+
+```
+Email,Name,Reason,OtherColumn,...
+joe@test.com,Joe,reminder,...
+jeff@email.com,Jeff,sales pitch,...
+```
+
 ## Setup
 
 You need to create a "OAuth 2.0 Client IDs" which has to be done with a Google Workspace (gsuite). This will not work on a personal gmail account (unless you create a app on a workspace and add your personal account as a test account).
