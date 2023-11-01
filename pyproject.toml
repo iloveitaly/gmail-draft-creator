@@ -18,7 +18,7 @@ python-decouple = "^3.5"
 google-auth-httplib2 = "^0.1.0"
 google-auth-oauthlib = "^0.4.6"
 click = "^8.1.7"
-markdown = "^3.4.3"
+markdown = "^3.5.1"
 
 [tool.poetry.scripts]
 gmail-draft-creator = "gmail_draft_creator:main"
