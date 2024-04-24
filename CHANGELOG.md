@@ -1,3 +1,12 @@
+## [1.2.2](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.2.1...v1.2.2) (2024-04-24)
+
+
+### Bug Fixes
+
+* case insensitive email column ([b541592](https://github.com/iloveitaly/gmail-draft-creator/commit/b5415920a231e4ae6ef306687d486a0b38b8b4d1))
+
+
+
 ## [1.2.1](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.2.0...v1.2.1) (2023-07-14)
 
 
