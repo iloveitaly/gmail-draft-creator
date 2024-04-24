@@ -24,6 +24,10 @@ Options:
 
 You can also import the `create_draft` function and use it in your own scripts.
 
+### CSV Files
+
+Must contain an `email` column (case insensitive).
+
 ### Template Files
 
 You can include subject line and variables in the template file:
@@ -59,13 +63,13 @@ You need to create a "OAuth 2.0 Client IDs" which has to be done with a Google W
 7. Download the JSON file, rename it to `credentials.json`, and place it in the root of this project.
 8. Run the script and oauth into your account
 
-If you want to edit scopes, you can:
+If you want to edit scopes on an existing application, you can:
 
 1. OAuth Consent Screen
 2. Edit
 3. Continue to step 2
 4. Add or remove scopes
-5.
+5. Add scopes and save
 
 #### Credential Scopes Needed
 
