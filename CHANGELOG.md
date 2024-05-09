@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.2.2...v1.3.0) (2024-05-09)
+
+
+### Features
+
+* improved csv column normalization ([b812197](https://github.com/iloveitaly/gmail-draft-creator/commit/b8121974e1dd3875c3d68a0c8665e0d8e3fe1a72))
+
+
+
 ## [1.2.2](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.2.1...v1.2.2) (2024-04-24)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * vscode configuration ([a0bf636](https://github.com/iloveitaly/gmail-draft-creator/commit/a0bf63639b4e8727a36e05176fa1adc2434e7b3f))
-
-
-
-## [1.0.1](https://github.com/iloveitaly/gmail-draft-creator/compare/8bd392ead05bc6e5f37905775ce8286b75f76aac...v1.0.1) (2023-07-04)
-
-
-### Bug Fixes
-
-* black formatting ([8bd392e](https://github.com/iloveitaly/gmail-draft-creator/commit/8bd392ead05bc6e5f37905775ce8286b75f76aac))
 
 
 
