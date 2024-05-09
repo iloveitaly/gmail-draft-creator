@@ -30,6 +30,16 @@ Must contain an `email` column (case insensitive).
 
 Each column in the CSV is passed as a parameter to the provided template. The column name is stripped of whitespace, lowercased, and stripped all non-alpha characters. For example, a column named `First Name` would be passed as `$firstname` in the template.
 
+#### Example CSV File
+
+A CSV file that would work with this template might be something like this:
+
+```csv
+Email,Name,Reason,OtherColumn
+joe@test.com,Joe,reminder
+jeff@email.com,Jeff,sales pitch
+```
+
 ### Template Files
 
 You can include subject line and variables in the template file:
@@ -38,16 +48,6 @@ You can include subject line and variables in the template file:
 Subject: Hello $NAME
 
 Hi, here's another ${REASON} why I'm emailing you.
-```
-
-### CSV Files
-
-A CSV file that would work with this template might be something like this:
-
-```
-Email,Name,Reason,OtherColumn,...
-joe@test.com,Joe,reminder,...
-jeff@email.com,Jeff,sales pitch,...
 ```
 
 ## Setup
