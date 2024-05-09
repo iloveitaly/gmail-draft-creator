@@ -1,3 +1,12 @@
+## [1.3.1](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.3.0...v1.3.1) (2024-05-09)
+
+
+### Bug Fixes
+
+* don't pop email column ([aad013b](https://github.com/iloveitaly/gmail-draft-creator/commit/aad013b16146624c4d6750a16fbf1f0875a34444))
+
+
+
 # [1.3.0](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.2.2...v1.3.0) (2024-05-09)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * support included subject in template string, add variables to template ([dab13a0](https://github.com/iloveitaly/gmail-draft-creator/commit/dab13a089fb80c71d40e241a2b07240e5264618f))
-
-
-
-# [1.1.0](https://github.com/iloveitaly/gmail-draft-creator/compare/v1.0.1...v1.1.0) (2023-07-04)
-
-
-### Features
-
-* vscode configuration ([a0bf636](https://github.com/iloveitaly/gmail-draft-creator/commit/a0bf63639b4e8727a36e05176fa1adc2434e7b3f))
 
 
 
