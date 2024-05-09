@@ -6,7 +6,7 @@ of people where you want to slightly customize the emails for each user. You can
 ## Installation
 
 ```shell
-pip install gmail-draft-creator
+pip install -U gmail-draft-creator
 ```
 
 ## Usage
@@ -27,6 +27,8 @@ You can also import the `create_draft` function and use it in your own scripts.
 ### CSV Files
 
 Must contain an `email` column (case insensitive).
+
+Each column in the CSV is passed as a parameter to the provided template. The column name is stripped of whitespace, lowercased, and stripped all non-alpha characters. For example, a column named `First Name` would be passed as `$firstname` in the template.
 
 ### Template Files
 

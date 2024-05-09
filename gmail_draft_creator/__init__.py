@@ -73,7 +73,14 @@ def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run):
                 print("No email found for row, skipping")
                 continue
 
-            template_params = {k.lower().strip(): v.strip() for k, v in row.items()}
+
+            def normalize_key(key):
+                cleaned_key = key.lower().strip()
+                cleaned_key = re.sub(r'\W+', '', cleaned_key)
+                return cleaned_key
+
+            # each column in the CSV is passed as a parameter to the template
+            template_params = {normalize_key(k): v.strip() for k, v in row.items()}
 
             if email is not None:
                 create_draft(email, template_string, template_params, subject, dry_run)
