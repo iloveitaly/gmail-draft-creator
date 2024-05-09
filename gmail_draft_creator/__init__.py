@@ -63,7 +63,7 @@ def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run):
 
             for key in row.keys():
                 if key.lower() == 'email':
-                    email = row.pop(key)
+                    email = row[key]
                     break
 
             if email:
@@ -72,7 +72,6 @@ def send_drafts_from_csv(csv_file_path, template_file_path, subject, dry_run):
             if email is None:
                 print("No email found for row, skipping")
                 continue
-
 
             def normalize_key(key):
                 cleaned_key = key.lower().strip()
